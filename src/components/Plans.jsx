@@ -13,19 +13,19 @@ export function Plans() {
         <>
             <div className={`bg-white absolute -top-[7rem] md:-top-[6rem] left-1/2 -translate-x-1/2 shadow w-[90%] max-w-[500px] md:max-w-[580px] mx-auto px-8 py-6 ${selectedStep !== 2 && "hidden"} lg:relative lg:top-0 lg:m-0 lg:p-0 lg:w-full lg:max-w-[100%] lg:shadow-none `}>
                     <div className="lg:mb-8">
-                        <h1 className="text-2xl lg:text-4xl text-marineBlue font-bold">Select your plan</h1>
+                        <h2 className="text-2xl lg:text-4xl text-marineBlue font-bold">Select your plan</h2>
                         <p className="mt-3 mb-6">You have the option of monthly or yearly billing.</p>
 
                     </div>
                     <div className={`flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between`}>
                     {
                         plans.map(plan => <button type="button" key={plan.id} className={`flex gap-4 items-start border-[1px] border-lightGray p-4 ${billingType === "yearly" && "sm:p-[10px]"} md:p-4 rounded-lg ${plan.id === selectedPlanId && " border-purplishBlue bg-magnolia"} lg:flex-col lg:justify-between lg:item lg:gap-10`}  onClick={() => setSelectedPlanId(prevId => prevId === plan.id? prevId: plan.id)}>
-                            <div className="lg:mr-20"><img src={plan.icon} alt={`${plan.title} icon`}/></div>
-                            <div className={`text-left`}>
-                                <p className="text-marineBlue text-base font-semibold">{plan.title}</p>
-                                <p>${plan[billingPrices]}{billingType === "monthly"? "/mo" :"/yr"}</p>
-                                {billingType === "yearly" && <p className="text-marineBlue">2 months free</p>}
-                            </div>
+                            <span className="lg:mr-20"><img src={plan.icon} alt={`${plan.title} icon`}/></span>
+                            <span className={`text-left`}>
+                                <span className="text-marineBlue text-base font-semibold">{plan.title}</span>
+                                <span>${plan[billingPrices]}{billingType === "monthly"? "/mo" :"/yr"}</span>
+                                {billingType === "yearly" && <span className="text-marineBlue">2 months free</span>}
+                            </span>
                         </button>)
                     }
                     </div>

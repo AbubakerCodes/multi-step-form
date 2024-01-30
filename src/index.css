@@ -7,15 +7,12 @@
   body {
     font-family: 'Ubuntu', sans-serif;
     background-color: hsl(217, 100%, 97%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
   }
 
-  @media (min-width: 850px ){
-    body {
-      padding: 2%;
-      padding-inline: 0;
-    }
-    
-  }
   p {
     font-size: 16px;
     color: hsl(231, 11%, 63%);

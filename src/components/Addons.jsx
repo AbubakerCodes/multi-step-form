@@ -21,7 +21,7 @@ export function Addons () {
         <>
             <div className={`absolute -top-[7rem] md:-top-[6rem] left-1/2 -translate-x-1/2 shadow w-[90%] max-w-[500px] md:max-w-[580px] mx-auto px-8 py-6 bg-white ${selectedStep !== 3 && "hidden"}  lg:relative lg:top-0 lg:m-0 lg:p-0 lg:w-full lg:max-w-[100%] lg:shadow-none `}>
                 <div className="lg:mb-8">
-                    <h1 className="text-2xl lg:text-4xl text-marineBlue font-bold">Pick add-ons</h1>
+                    <h2 className="text-2xl lg:text-4xl text-marineBlue font-bold">Pick add-ons</h2>
                     <p className="mt-3 mb-6">Add-ons help enhance your gaming experience.</p>
 
                 </div>

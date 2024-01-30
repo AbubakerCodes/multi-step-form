@@ -10,7 +10,7 @@ import { PersonalInfo } from "./PersonalInfo.jsx";
 function SubscriptionForm () {
     const { 
         selectedStep, setSelectedStep, selectedPlanId, selectedAddonsIds, billingType, 
-        setPersonalInfo, validEmail, validName, validPhone
+        setPersonalInfo, validEmail, validName, validPhone, setMissingFieldError
       } = useFormContext();
       
     const [submitSuccess, setSubmitSuccess] = useState(false);
@@ -39,7 +39,8 @@ function handleSubmitForm(e) {
 }
     return (
         <>
-       <section className="sm:h-screen lg:h-auto lg:mw-1/2 flex flex-col sm:items-stretch lg:flex-row lg:justify-between lg:w-[80%] lg:max-w-[1000px] lg:mx-auto lg:bg-white lg:rounded-xl lg:p-4 lg:shadow-lg lg:align-middle">
+       <section className=" sm:h-screen lg:h-auto lg:mw-1/2 flex flex-col sm:items-stretch lg:flex-row lg:justify-between lg:w-[100vw] lg:max-w-[1000px] lg:mx-auto lg:bg-white lg:rounded-xl lg:p-4 lg:shadow-lg lg:align-middle">
+        <h1 className="sr-only">Subscription form</h1>
 
         {/* sidebar */}
             <aside className="sm:h-[27%] sm:w-full lg:h-auto bgSidebarSM lg:bgSidebar lg:w-[27%] lg:rounded-lg lg:pl-4">
@@ -75,8 +76,8 @@ function handleSubmitForm(e) {
                 </div>
             </aside>
         
-            {/* main */}
-            <main className="sm:h-[73%] sm:w-full lg:h-auto relative lg:flex lg:items-center lg:justify-center lg:pt-6 lg:pb-0  lg:w-[73%] lg:bg-white ">
+            {/* main content */}
+            <div className="sm:h-[73%] sm:w-full lg:h-auto relative lg:flex lg:items-center lg:justify-center lg:pt-6 lg:pb-0  lg:w-[73%] lg:bg-white ">
                 
                 {!submitSuccess &&
                 <form onSubmit={handleSubmitForm} className="sm:h-[100%] relative flex flex-col gap-6 lg:justify-between lg:gap-20 lg:mx-auto lg:max-w-[75%] lg:flex-1 ">
@@ -92,7 +93,7 @@ function handleSubmitForm(e) {
                 {/* Step 4: summary */}
                 <div className={`bg-white absolute -top-[7rem] md:-top-[6rem] left-1/2 -translate-x-1/2 shadow w-[90%] max-w-[500px] md:max-w-[580px] mx-auto px-8 py-6 ${selectedStep !== 4 && "hidden"} lg:relative lg:top-0 lg:m-0 lg:p-0 lg:w-full lg:max-w-[100%] lg:shadow-none `}>
                     <div className="lg:mb-8">
-                        <h1 className="text-2xl lg:text-4xl text-marineBlue font-bold"> Finishing up</h1>
+                        <h2 className="text-2xl lg:text-4xl text-marineBlue font-bold"> Finishing up</h2>
                         <p className="mt-3 mb-6">Double-check everything looks OK before confirming.</p>
 
                     </div>
@@ -133,7 +134,7 @@ function handleSubmitForm(e) {
                 <div className=" bg-white self-end w-full sm:absolute sm:bottom-0 px-5 py-6  lg:p-0 lg:m-0 lg:relative ">
                     <div className="flex justify-between items-center sm:w-full mx-auto  ">
                         {<button type="button" className={`bg-transparent px-4 py-2 text-coolGray rounded-md hover:text-marineBlue ${selectedStep === 1 && "hidden"}`} onClick={() => setSelectedStep(prev => prev - 1)}>Go Back</button>}
-                        {<button type="button" className={`ml-auto bg-marineBlue px-4 py-2 text-white rounded-md hover:opacity-90 ${selectedStep === 4 && "hidden"}`} onClick={() => validEmail && validName && validPhone ? setSelectedStep(prevVal => prevVal + 1) : setSelectedStep(prevVal => prevVal)}>Next step</button>}
+                        {<button type="button" className={`ml-auto bg-marineBlue px-4 py-2 text-white rounded-md hover:opacity-90 ${selectedStep === 4 && "hidden"}`} onClick={() => validEmail && validName && validPhone ? setSelectedStep(prevVal => prevVal + 1) : setMissingFieldError(!validEmail || !validName || !validPhone)}>Next step</button>}
                         {<button type="submit" className={`bg-purplishBlue px-4 py-2 text-white rounded-md hover:opacity-70 ${selectedStep < 4 && "hidden"}`}>Confirm</button>}
                     </div>
                 </div>
@@ -146,11 +147,11 @@ function handleSubmitForm(e) {
                 // Thank you message
                     <div className={`bg-white absolute -top-[7rem] md:-top-[6rem] left-1/2 -translate-x-1/2 shadow w-[90%] max-w-[500px] md:max-w-[580px] mx-auto px-8 py-16 text-center text-balance rounded-md lg:relative lg:top-0 lg:my-0 lg:mr-[25%] lg:w-full lg:max-w-[75%] lg:flex-1  lg:shadow-none lg:px-10 lg:py-32`}>
                         <img src="/assets/icon_thank_you.svg" alt="check mark" className="mx-auto"/>
-                        <h1 className="mt-6 mb-3 text-2xl lg:text-4xl text-marineBlue font-bold">Thank you!</h1>
+                        <p className="mt-6 mb-3 text-2xl lg:text-4xl text-marineBlue font-bold">Thank you!</p>
                         <p className="">Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need support, please feel free to email us at support@loremgaming.com.</p>
                     </div>
                     }
-            </main>
+            </div>
        </section>
         </>
     )

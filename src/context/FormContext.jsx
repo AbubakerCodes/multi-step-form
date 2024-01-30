@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import { PersonalInfo } from "../components/PersonalInfo";
 
 const FormContext = createContext({});
 
@@ -12,17 +13,18 @@ export const FormProvider = ({children}) => {
     const [selectedAddonsIds, setSelectedAddonsIds] = useState([101]);
     const [billingType, setBillingType] = useState("monthly");
     const [personalInfo, setPersonalInfo] = useState({name: "", email: "", phone: ""});
-
+    
     const emailRegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     const phoneRegExp = /^(\+\d{1,4}\s?)?(\d{1,4}[\s\-]?)?(\(\d{1,4}\)[\s\-]?)?(\d{1,12}[\s\-]?)+$/;
     const nameRegExp = /^[a-zA-Z]{2,}(?:\s[a-zA-Z]+)?$/;
-
+    
     const {name, email, phone} = personalInfo;
     const validEmail = emailRegExp.test(email);
     const validName = nameRegExp.test(name);
     const validPhone = phoneRegExp.test(phone);
+    const [missingFieldError, setMissingFieldError] = useState(null);
 
-    const contextValues = {selectedStep, setSelectedStep, selectedPlanId, setSelectedPlanId, selectedAddonsIds, setSelectedAddonsIds, billingType, setBillingType, personalInfo, setPersonalInfo, validEmail, validName, validPhone}
+    const contextValues = {selectedStep, setSelectedStep, selectedPlanId, setSelectedPlanId, selectedAddonsIds, setSelectedAddonsIds, billingType, setBillingType, personalInfo, setPersonalInfo, validEmail, validName, validPhone, setMissingFieldError, missingFieldError}
 
     return<FormContext.Provider value={contextValues}>{children}</FormContext.Provider>
 }
