@@ -21,10 +21,10 @@ export function Plans() {
                     {
                         plans.map(plan => <button type="button" key={plan.id} className={`flex gap-4 items-start border-[1px] border-lightGray p-4 ${billingType === "yearly" && "sm:p-[10px]"} md:p-4 rounded-lg ${plan.id === selectedPlanId && " border-purplishBlue bg-magnolia"} lg:flex-col lg:justify-between lg:item lg:gap-10`}  onClick={() => setSelectedPlanId(prevId => prevId === plan.id? prevId: plan.id)}>
                             <span className="lg:mr-20"><img src={plan.icon} alt={`${plan.title} icon`}/></span>
-                            <span className={`text-left`}>
+                            <span className={`text-left flex flex-col`}>
                                 <span className="text-marineBlue text-base font-semibold">{plan.title}</span>
-                                <span>${plan[billingPrices]}{billingType === "monthly"? "/mo" :"/yr"}</span>
-                                {billingType === "yearly" && <span className="text-marineBlue">2 months free</span>}
+                                <span className="text-coolGray">${plan[billingPrices]}{billingType === "monthly"? "/mo" :"/yr"}</span>
+                                {billingType === "yearly" && <span className="text-marineBlue mt-1 font-medium">2 months free</span>}
                             </span>
                         </button>)
                     }

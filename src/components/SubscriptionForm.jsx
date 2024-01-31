@@ -39,11 +39,11 @@ function handleSubmitForm(e) {
 }
     return (
         <>
-       <section className=" sm:h-screen lg:h-auto lg:mw-1/2 flex flex-col sm:items-stretch lg:flex-row lg:justify-between lg:w-[100vw] lg:max-w-[1000px] lg:mx-auto lg:bg-white lg:rounded-xl lg:p-4 lg:shadow-lg lg:align-middle">
+       <section className=" sm:h-screen w-[100vw] lg:h-auto lg:mw-1/2 flex flex-col sm:items-stretch lg:flex-row lg:justify-between lg:max-w-[1000px] lg:mx-auto lg:bg-white lg:rounded-xl lg:p-4 lg:shadow-lg lg:align-middle">
         <h1 className="sr-only">Subscription form</h1>
 
         {/* sidebar */}
-            <aside className="sm:h-[27%] sm:w-full lg:h-auto bgSidebarSM lg:bgSidebar lg:w-[27%] lg:rounded-lg lg:pl-4">
+            <aside className="sm:h-[27%] lg:h-auto bgSidebarSM lg:bgSidebar lg:w-[27%] lg:rounded-lg lg:pl-4">
                 <div className="flex gap-8 md:gap-10 justify-center px-8 pt-4 pb-36 md:pt-10 lg:flex-col lg:gap-4 lg:items-start lg:px-4 lg:py-8">
                     <div className={`flex items-center gap-4`}>
                         <button onClick={() => validEmail && validName && validPhone ? setSelectedStep(prev => prev === 1? prev : 1): setSelectedStep(prev => prev)} className={`flex items-center justify-center h-6 w-6 p-4 rounded-full border-2 border-lightBlue text-lightBlue ${selectedStep === 1 && "bg-lightBlue text-marineBlue"}`}>1</button>
