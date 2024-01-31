@@ -26,7 +26,7 @@ export function PersonalInfo (props) {
 
                     <div className="lg:relative lg:mb-2">
                         <label className="block text-marineBlue text-[0.9rem] font-medium lg:mb-1" htmlFor="name">Name</label>
-                        <input className={`min-w-[100%] mb-4 px-4 py-[10px] border-[1px] border-lightGray  text-marineBlue font-bold outline-none focus:border-purplishBlue rounded-lg ${personalInfo.name && !validName && "border-strawberryRed"}`}
+                        <input className={`min-w-[100%] mb-4 px-4 py-[10px] border-[1px] border-lightGray  text-marineBlue font-bold outline-none focus:border-purplishBlue rounded-lg ${personalInfo.name && !validName && "border-strawberryRed"} ${!personalInfo.name && showError && "border-strawberryRed"}`}
                         onChange={handleInputChange} type="text" name="name" id="name" 
                         autoComplete="off"  aria-invalid={validName ? "false" : "true"} required 
                         value={personalInfo.name} placeholder="e.g. Stephen King"/>
@@ -35,7 +35,7 @@ export function PersonalInfo (props) {
 
                     <div className="lg:relative lg:mb-2">
                         <label className="block text-marineBlue text-[0.9rem] font-medium lg:mb-1" htmlFor="email">Email Address</label>
-                        <input className={`min-w-[100%] mb-4 px-4 py-[10px] border-[1px] border-lightGray  text-marineBlue font-bold outline-none focus:border-purplishBlue rounded-lg ${personalInfo.email && !validEmail && "border-strawberryRed"}`}
+                        <input className={`min-w-[100%] mb-4 px-4 py-[10px] border-[1px] border-lightGray  text-marineBlue font-bold outline-none focus:border-purplishBlue rounded-lg ${personalInfo.email && !validEmail && "border-strawberryRed"} ${!personalInfo.email && showError && "border-strawberryRed"}`}
                         onChange={handleInputChange} type="email" name="email" id="email" required 
                         autoComplete="off" aria-invalid={validEmail ? "false" : "true"}
                         
@@ -45,7 +45,7 @@ export function PersonalInfo (props) {
 
                     <div className="lg:relative">
                         <label className="block text-marineBlue text-[0.9rem] font-medium lg:mb-1" htmlFor="phone">Phone Number</label>
-                        <input className={`min-w-[100%] mb-4 px-4 py-[10px] border-[1px] border-lightGray  text-marineBlue font-bold outline-none focus:border-purplishBlue rounded-lg ${personalInfo.phone && !validPhone && "border-strawberryRed"}`} 
+                        <input className={`min-w-[100%] mb-4 px-4 py-[10px] border-[1px] border-lightGray  text-marineBlue font-bold outline-none focus:border-purplishBlue rounded-lg ${personalInfo.phone && !validPhone && "border-strawberryRed"} ${!personalInfo.phone && showError && "border-strawberryRed"}`} 
                         onChange={handleInputChange} type="tel" name="phone" id="phone" required  
                         autoComplete="off" aria-invalid={validPhone ? "false" : "true"}
                         value={personalInfo.phone} placeholder="e.g. +1 234 567 890"/>
