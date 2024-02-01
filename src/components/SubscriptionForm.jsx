@@ -39,7 +39,7 @@ function handleSubmitForm(e) {
 }
     return (
         <>
-       <section className=" sm:h-screen w-[100vw] lg:h-auto lg:mw-1/2 flex flex-col sm:items-stretch lg:flex-row lg:justify-between lg:max-w-[1000px] lg:mx-auto lg:bg-white lg:rounded-xl lg:p-4 lg:shadow-lg lg:align-middle">
+       <section className=" sm:h-screen w-[100vw] lg:h-[600px] lg:mw-1/2 flex flex-col sm:items-stretch lg:flex-row lg:justify-between lg:w-[95vw] lg:max-w-[1000px] lg:mx-auto lg:bg-white lg:rounded-xl lg:p-4 lg:shadow-lg lg:align-middle">
         <h1 className="sr-only">Subscription form</h1>
 
         {/* sidebar */}
